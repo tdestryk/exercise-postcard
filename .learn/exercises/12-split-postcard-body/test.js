@@ -1,6 +1,7 @@
 /**
  * @jest-environment jsdom
  */
+/** @jest-environment jsdom */
 const fs = require("fs");
 const path = require("path");
 const { fromFile, fromHTML } = require("../../utils/dom");
@@ -17,9 +18,8 @@ test("Make sure you created the styles.css file", function(){
 })
 
 test("Make sure your index.html contains the <link> tag", function(){
-    const content = fs.readFileSync("./index.html", 'utf8')
-    document.documentElement.innerHTML = content.toString();
-    const linkTag = _document.querySelector("link")
+    dom = fromFile();
+    const linkTag = dom.document.querySelector("link");
     expect(linkTag).not.toBe(null);
 })
 

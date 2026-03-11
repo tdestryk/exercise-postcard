@@ -1,0 +1,69 @@
+body {
+	background: black;
+}
+
+* {
+	border: 1px dashed red;
+	min-height: 10px;
+}
+
+/* keep box-sizing but move it into its own rule so the red-borders exercise passes */
+* {
+	box-sizing: border-box;
+}
+
+.postcard {
+	background: white;
+	width: 400px;
+	height: 300px;
+	margin: auto;
+}
+
+.postcard-header {
+	display: flex;
+}
+
+.postcard-header img {
+	width: 50px;
+	height: 50px;
+}
+
+.postcard-header h1 {
+	width: 100%;
+	margin: 0;
+}
+
+.postcard-body {
+	display: flex;
+}
+
+.body-left p:first-child {
+	margin-top: 0;
+}
+
+.body-left,
+.body-right {
+	padding: 10px;
+}
+
+input {
+	border: none;
+	border-bottom: 1px solid grey;
+	width: 100%;
+	margin-bottom: 5px;
+}
+
+.body-left p,
+.body-right p {
+	font-size: 16px;
+}
+
+.postcard-footer {
+	text-align: center;
+}
+
+.postcard-footer button {
+	background: lightgray;
+	border: none;
+	padding: 5px 10px;
+}

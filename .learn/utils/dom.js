@@ -1,5 +1,18 @@
 const fs = require("fs")
 
+// make sure a DOM environment exists (jest may not be configured correctly)
+if (typeof document === 'undefined' || typeof window === 'undefined') {
+    // lazily require jsdom to avoid adding a dependency during normal runtime
+    const { JSDOM } = require('jsdom');
+    const domInstance = new JSDOM(`<!doctype html><html><head></head><body></body></html>`);
+    global.window = domInstance.window;
+    global.document = domInstance.window.document;
+    global.navigator = domInstance.window.navigator;
+    // copy commonly used globals so tests that destructure them don't blow up
+    global.Node = domInstance.window.Node;
+    global.Element = domInstance.window.Element;
+}
+
 const red = (msg) => `\x1b[33m${msg}\x1b[0m`
 const fromFile = (path='index.html', context='') => DOM(path, null, context);
 const fromHTML = (html='', context='') => DOM(null, html, context);
